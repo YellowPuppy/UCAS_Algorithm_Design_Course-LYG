@@ -1,0 +1,13 @@
+    /*找最大最小元素 (方法二)*/
+    template <class T>
+    bool MinMax(T a[], int n, int& Min, int& Max) {
+        //寻找a[0:n-1]中的最小元素与最大元素
+        //如果数组中的元素数目小于1, 则返回false
+        if(n<1) return false;
+        Min=Max=0; //初始化
+        for(int i=1; i<n; i++) {
+            if(a[Min]>a[i]) Min=i;
+            else if(a[Max]<a[i]) Max=i;
+        }
+        return true;
+    }

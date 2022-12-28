@@ -1,0 +1,357 @@
+\documentclass{article}
+
+%
+% 引入模板的style文件
+%
+\usepackage{homework}
+
+\setCJKmainfont{SimSun}[AutoFakeBold] %宋体加粗
+\setCJKsansfont{SimHei}[AutoFakeBold] %黑体加粗
+
+
+\usepackage{minted} %配合minted宏包进行好看的高亮
+\usepackage{currfile} %配合minted宏包进行好看的高亮
+\usepackage{caption} %配合minted宏包进行好看的高亮
+\usepackage{tcolorbox} %配合minted宏包进行好看的高亮
+\usepackage{xcolor} %配合minted宏包进行好看的高亮
+\tcbuselibrary{skins} %配合minted宏包进行好看的高亮
+\tcbuselibrary{minted} %配合minted宏包进行好看的高亮
+\usemintedstyle{paraiso-dark} %配合minted宏包进行好看的高亮
+
+
+
+%
+% 封面
+%
+
+
+\title{
+	\includegraphics[width=0.6\textwidth]{images/title/ucas_logo 1.pdf}\\
+    \vspace{1in}
+    \textmd{\textbf{\hmwkClass}}\\
+	\textmd{\Large{\textbf{\hmwkClassID}}}\\
+    \textmd{\textbf{\hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\large{\hmwkCompleteTime }\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}\\
+    \vspace{1in}
+	\includegraphics[width=0.25\textwidth]{images/title/Cyber.jpg}\\
+	\vspace{1in}
+}
+
+\author{
+	\hmwkAuthorName \\ 
+	\hmwkAuthorStuID \\
+	\hmwkAuthorInst \\
+	\hmwkAuthorzhuanye \\
+	\hmwkAuthorfangxiang
+	}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+
+%
+% 正文部分
+%
+\begin{document}
+
+
+\maketitle
+
+
+%\include{chapters/ch01}
+%\include{chapters/ch02}
+%\include{chapters/ch03}
+%\include{chapters/ch04}
+%\include{chapters/ch05}
+
+
+\pagebreak
+
+\begin{homeworkProblem}
+	试确定下述程序的关键操作数, 该函数实现一个$m\times n$矩阵与一个$n\times p$矩阵之间的乘法:
+	
+\begin{tcblisting}{listing engine=minted,boxrule=0.1mm,
+	colback=blue!5!white,colframe=blue!75!black,
+	listing only,left=5mm,enhanced,sharp corners=all,
+	overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+	rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+	minted language=c++,
+	minted style=tango,
+	minted options={fontsize=\normalsize,breaklines,autogobble,linenos,numbersep=3mm}}
+    template <class T>
+    void Mult(T **a, T **b, int m, int n, int p) {
+        //m×n矩阵A与n×p矩阵B相成得到m×p矩阵C
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < p ;j++) {
+                T sum = 0;
+                Tfor(int k = 0; k < n; k++)
+                Tsum += a[i][k]*b[k][j];
+                C[i][j] = sum;
+            }
+        }
+    }
+\end{tcblisting}
+	
+	
+	\solution
+	\\
+
+	此算法的关键操作为\textbf{第8行}, 该语句的操作数为2 (1次加法和1次乘法). 则三层循环的总关键操作数为:$$T=\sum_{i=0}^{m-1}{\sum_{j=0}^{p-1}{\sum_{k=0}^{n-1}{2}}}=2mnp
+	$$
+	故该算法的时间复杂度为$$T\left( m,n,p \right) =O\left( 2mnp \right) =O\left( mnp \right) $$
+	
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+	函数MinMax用来查找数组$a[0:n-1]$中的最大元素和最小元素, 以下给出两个程序. 令$n$为实例特征. 试问: 在各个程序中, $a$中元素之间的比较次数在最坏情况下各是多少?
+
+\begin{tcblisting}{listing engine=minted,boxrule=0.1mm,
+	colback=blue!5!white,colframe=blue!75!black,
+	listing only,left=5mm,enhanced,sharp corners=all,
+	overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+	rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+	minted language=c++,
+	minted style=tango,
+	minted options={fontsize=\normalsize,breaklines,autogobble,linenos,numbersep=3mm}}
+    /*找最大最小元素 (方法一)*/
+    template <class T>
+    bool MinMax(T a[], int n, int& Min, int& Max) {
+        //寻找a[0:n-1]中的最小元素与最大元素
+        //如果数组中的元素数目小于1, 则返回false
+        if(n<1) return false;
+        Min=Max=0; //初始化
+        for(int i=1; i<n; i++) {
+            if(a[Min]>a[i]) Min=i;
+            if(a[Max]<a[i]) Max=i;
+        }
+        return true;
+    }
+\end{tcblisting}
+
+\begin{tcblisting}{listing engine=minted,boxrule=0.1mm,
+	colback=blue!5!white,colframe=blue!75!black,
+	listing only,left=5mm,enhanced,sharp corners=all,
+	overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+	rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+	minted language=c++,
+	minted style=tango,
+	minted options={fontsize=\normalsize,breaklines,autogobble,linenos,numbersep=3mm}}
+    /*找最大最小元素 (方法二)*/
+    template <class T>
+    bool MinMax(T a[], int n, int& Min, int& Max) {
+        //寻找a[0:n-1]中的最小元素与最大元素
+        //如果数组中的元素数目小于1, 则返回false
+        if(n<1) return false;
+        Min=Max=0; //初始化
+        for(int i=1; i<n; i++) {
+            if(a[Min]>a[i]) Min=i;
+            else if(a[Max]<a[i]) Max=i;
+        }
+        return true;
+    }
+\end{tcblisting}
+	
+	
+	\solution
+	\\
+
+	不论数组$a$是单调递增还是单调递减, for循环内部的两次判断都得执行, 所以方法1在任何情况下的元素比较次数都为$2\times (n-1)$; 而对于方法2来说, 当数组$a$单调递减(最好情况)时, for循环内部的第一个判断条件一定满足, 那么else if这个判断自然就不用执行了, 即此情形下的元素比较次数为$1\times (n-1)$. 但当数组$a$单调递增(最坏情况)时, 第一个循环条件在各轮循环中都不能满足, 所以紧跟着需要执行后边的else if判断, 即此情形下的元素比较次数为$2\times (n-1)$.
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+	证明以下关系式不成立: (1). $10n^2+9=O\left( n \right) $; \quad (2). $n^2\log n=\Theta \left( n^2 \right)$.
+	\\
+
+	\solution
+	\\
+
+	\begin{proof}
+
+		\textbf{(1).} 考虑极限$\displaystyle \lim_{n\rightarrow \infty} \frac{10n^2+9}{n}=+\infty >c\,\,\left( \forall c>0 \right) $, 故根据大$O$比率定理可知该式不成立;
+		\\ 
+
+		\textbf{(2).} 考虑极限$\displaystyle \lim_{n\rightarrow \infty} \frac{n^2\log n}{n^2}=+\infty >c\,\,\left( \forall c>0 \right) $, 故根据$\Theta$比率定理可知该式不成立.
+	\end{proof}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	按照渐近阶从低到高的顺序排列以下表达式:
+	$$4 n^2, \log n, 3^n, 20 n, n^{2 / 3}, n !$$
+
+	\solution
+	\\
+
+	根据Stirling公式:$$n!\sim \sqrt{2\pi n}\left( \frac{n}{e} \right) ^n (\text{as}\, n\to +\infty)$$
+
+	可知有渐进阶的顺序为$$\log n\ll n^{2 / 3} \ll 20n=\Theta \left( n \right) \ll 4n^2=\Theta \left( n^2 \right) \ll 3^n\ll n!
+	$$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+	(1). 假设某算法在输入规模是$n$时为$T(n)=3\ast 2^n$. 在某台计算机上实现并完成该算法的时间是$t$秒.现有另一台计算机,其运行速度为第一台的64倍. 那么,在这台计算机上用同一算法在$t$秒内能解决规模为多大的问题?
+
+	(2). 若上述算法改进后的新算法的时间复杂度为$T(n)=n^2$, 则在新机器上用$t$秒时间能解决输入规模为多大的问题?
+
+	(3). 若进一步改进算法, 最新的算法的时间复杂度为$T(n)=8$, 其余条件不变, 在新机器上运行, 在$t$秒内能够解决输入规模为多大的问题?
+	\\
+
+	\solution
+	\\
+
+	\textbf{(1).} 设问题规模为$M$, 则新机器上的求解时间为$t=3\times 2^M/64$, 老机器的求解时间$t= 3\times 2^n$,即解得$M=n+6$;
+
+	\textbf{(2).} 同理设问题规模为$M$, 则新机器上的求解时间为$t=M^2/64=n^2$, 老机器的求解时间$t=n^2$,即解得$M=8n$;
+
+	\textbf{(3).} 因为该算法的时间复杂度是常数阶的, 也就意味着问题规模不影响求解时间(当问题规模很大时), 所以在任何(可以运行该算法的)机器上, $t$秒内可以解决任意规模的问题.
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+	考虑下述选择排序算法\ref{alg:选择排序}所示: 
+	
+	\begin{algorithm}[H]
+		\begin{algorithmic}[1]
+		\Require{$n$个不等整数的数组$A[1..n]$}
+		\Ensure{按递增次序排序的$A$}
+		\For{$i:=1$ to $n$}
+			\For{$ j:=i+1 $ to $n$}
+				\If{$A[j]<A[i]$}
+				\State $A[i] \leftrightarrow  A[j]$
+				\EndIf
+			\EndFor
+		\EndFor
+		\State 输出排序后的数组$A$
+		\end{algorithmic}
+		\caption{选择排序}
+		\label{alg:选择排序}
+	\end{algorithm}
+	问: (1)最坏情况下做多少次比较运算?
+
+	(2)最坏情况下做多少次交换运算?在什么输入时发生?
+	\\
+
+	\solution
+	\\
+
+	\textbf{(1).} 任意情况下要比较$\left( n-1 \right) +\left( n-2 \right) +\cdots +1=\frac{1}{2}n\left( n-1 \right) $次. 再者, 此处不存在所谓的最好或最坏情况, 不论数组$A$是逆序还是升序排列, 计算机不可能因为提前得知$A$的所有情况而不执行判断语句, 即每次循环都需要进行比较运算;
+
+	\textbf{(1).} 最坏情况: 输入数组内元素为降序排列. 此时做$\left( n-1 \right) +\left( n-2 \right) +\cdots +1=\frac{1}{2}n\left( n-1 \right) $次交换运算. 当数组$A$内元素为升序排列时, 则交换次数为0 (即为最好情况).
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	考虑下面的每对函数$f(n)$和$g(n)$, 比较他们的阶.
+
+	(1). $f\left( n \right) =\frac{1}{2}\left( n^2-n \right) ,\,\, g\left( n \right) =6n$; \quad \quad (2). $f\left( n \right) =n+2\sqrt{n},\,\, g\left( n \right) =n^2$;
+
+	(3). $f\left( n \right) =n+n\log n,\,\, g\left( n \right) =n\sqrt{n}$; \quad (4). $f\left( n \right) =\log \left( n! \right) ,\,\, g\left( n \right) =n^{1.05}$;
+	\\
+
+	\solution
+	\\
+
+	\textbf{(1)}. $f\left( n \right) =\Theta \left( n^2 \right) \gg \Theta \left( n \right) =g\left( n \right)$; \quad \quad \quad \,\,\,\,\textbf{(2)}. $f\left( n \right) =\Theta \left( n \right) \ll \Theta \left( n^2 \right) =g\left( n \right) $;
+
+	\textbf{(3)}. $f\left( n \right) =\Theta \left( n\log n \right) \ll \Theta \left( n^{1.5} \right) =g\left( n \right) $; \quad \textbf{(4)}. 根据\textbf{斯特林公式}可知:$$\log \left( n! \right) \sim \log \left( \sqrt{2\pi n}\left( \frac{n}{e} \right) ^n \right) =\frac{1}{2}\log \left( 2\pi n \right) +n\left( \log n-\log e \right) \sim n\log n \, \left( \mathrm{as} \,n\rightarrow \infty \right) 
+	$$
+
+	所以有$f\left( n \right) =\Theta \left( n\log n \right) \ll \Theta \left( n^{1.05} \right) =g\left( n \right) $.
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+	在表\ref{原始表格}中填入true或false.
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& $f(n)$       & $g(n)$            & $f(n)=O(g(n))$ & $f(n)=\Omega(g(n))$ & $f(n)=\Theta(g(n))$ \\ \hline
+		1 & $2n^3+3n$    & $100n^2+2n+100$   &                &                     &                     \\ \hline
+		2 & $50n+\log n$ & $10n+\log \log n$ &                &                     &                     \\ \hline
+		3 & $50n\log n$  & $10n \log \log n$ &                &                     &                     \\ \hline
+		4 & $\log n$     & $\log^2 n$        &                &                     &                     \\ \hline
+		5 & $n!$         & $5^n$             &                &                     &                     \\ \hline
+		\end{tabular}
+		\caption{原始表格}
+		\label{原始表格}
+	\end{table}
+
+	\solution
+	\\
+	
+	解答如下表\ref{解答}所示:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& $f(n)$       & $g(n)$            & $f(n)=O(g(n))$ & $f(n)=\Omega(g(n))$ & $f(n)=\Theta(g(n))$ \\ \hline
+		1 & $2n^3+3n$    & $100n^2+2n+100$   & False          & True                & False               \\ \hline
+		2 & $50n+\log n$ & $10n+\log \log n$ & True           & True                & True                \\ \hline
+		3 & $50n\log n$  & $10n \log \log n$ & False          & True                & False               \\ \hline
+		4 & $\log n$     & $\log^2 n$        & True           & False               & False               \\ \hline
+		5 & $n!$         & $5^n$             & False          & True                & False               \\ \hline
+		\end{tabular}
+		\caption{解答}
+		\label{解答}
+	\end{table}
+\end{homeworkProblem}
+
+
+
+\pagebreak
+
+\begin{homeworkProblem}
+	用迭代法求解下列递推方程: 
+
+	(1). $\begin{cases}
+		T\left( n \right) =T\left( n-1 \right) +n-1\\
+		T\left( 1 \right) =0\\
+	\end{cases}$; \quad (2). $\left\{ \begin{array}{l}
+		T\left( n \right) =2T\left( \frac{n}{2} \right) +n-1\\
+		T(1)=0\\
+	\end{array},n=2^k \right.$
+	\\
+
+	\solution
+	\\
+
+	\textbf{(1)}. 易知$$\left\{ \begin{array}{c}
+		T\left( 2 \right) -T\left( 1 \right) =1\\
+		T\left( 3 \right) -T\left( 2 \right) =2\\
+		\vdots\\
+		T\left( n \right) -T\left( n-1 \right) =n-1\\
+	\end{array} \right. \xrightarrow{\text{各式相加}}T\left( n \right) =1+2+\cdots +n-1=\frac{1}{2}n\left( n-1 \right) = \Theta \left(n^2\right)$$
+
+	\textbf{(2)}. 令$n=2^k$,则易知有如下:
+	\begin{align}
+		T\left( 2^k \right) &=2T\left( 2^{k-1} \right) +1\cdot 2^k-1 \notag
+		\\
+		&=2^2T\left( 2^{k-2} \right) +2\cdot 2^k-\left( 1+2 \right) \notag
+		\\
+		&=2^3T\left( 2^{k-3} \right) +3\cdot 2^k-\left( 1+2+2^2 \right) \notag
+		\\
+		&\,\,\, \vdots \notag
+		\\
+		&=2^kT\left( 1 \right) +k\cdot 2^k-\left( 1+2+\cdots +2^{k-1} \right) \notag
+		\\
+		&=k\cdot 2^k+\left( 1-2^k \right) =\left( k-1 \right) \cdot 2^k+1 \notag
+		\\
+		&=n\log n-n+1=T(n)=\Theta\left( n\log n \right) \notag
+	\end{align}
+\end{homeworkProblem}
+
+至此, Chap 1-2的作业解答完毕.
+
+
+% 引用文献
+\bibliographystyle{unsrt}  % unsrt:根据引用顺序编号
+\bibliography{refs}
+
+
+\end{document}
