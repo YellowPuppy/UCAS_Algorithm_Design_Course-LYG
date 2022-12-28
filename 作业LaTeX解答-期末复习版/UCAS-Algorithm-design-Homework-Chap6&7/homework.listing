@@ -1,0 +1,26 @@
+bool Latincheck(int X[4][4], int k, int row, int line) {
+    for(int i = 0; i < row; i++) {
+        if(X[i][line] == k) return false;
+    }
+    for(int j = 0; j < line; j++) {
+        if(X[row][j] == k) return false;
+    }
+    return true;
+}
+void LatinMatrix(int X[4][4], int row, int line) {
+    if(row == 3 && line == 3) {
+        for(int i = 0; i < 4; i++)
+            for(int j = 0; j < 4; j++)
+                cout << X[i][j] << " ";
+        return ;
+    }
+    else {
+        for(int color = 1; color <= 4; color++) {
+            if(Latincheck(X, color, row, line)) {
+                X[row][line] = color;
+                if(line < 3) LatinMatrix(X, row, line + 1);
+                else if (line == 3 && row != 3) LatinMatrix(X, row + 1, 0);
+            }
+        }
+    }
+}
