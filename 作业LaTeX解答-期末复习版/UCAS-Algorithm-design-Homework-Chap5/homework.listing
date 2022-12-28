@@ -1,0 +1,16 @@
+void MatrixChain(int **d, int n, int **t, int **s) {
+    for (int i = 1; i <= n; i++) t[i][i] = 0;
+    for (int r = 2; r <= n; r++){
+        for (int i = 1; i <= n - r + 1; i++){
+            int j = i + r - 1;
+            t[i][j] = t[i + 1][j] + d[i - 1][i] + d[i][j] + d[i - 1][j];
+            s[i][j] = i;
+            for (int k = i + 1; k < j; k++){
+                int T = t[i][k] + t[k + 1][j] + d[i - 1][k] + d[k][j] + d[i - 1][j];
+                if(t < t[i][j]) {
+                    t[i][j] = t, s[i][j] = k;
+                }
+            }
+        }
+    }
+}
