@@ -1,0 +1,420 @@
+\documentclass{article}
+
+%
+% 引入模板的style文件
+%
+\usepackage{homework}
+
+\setCJKmainfont{SimSun}[AutoFakeBold] %宋体加粗
+\setCJKsansfont{SimHei}[AutoFakeBold] %黑体加粗
+
+
+\usepackage{minted} %配合minted宏包进行好看的高亮
+\usepackage{currfile} %配合minted宏包进行好看的高亮
+\usepackage{caption} %配合minted宏包进行好看的高亮
+\usepackage{tcolorbox} %配合minted宏包进行好看的高亮
+\usepackage{xcolor} %配合minted宏包进行好看的高亮
+\tcbuselibrary{skins} %配合minted宏包进行好看的高亮
+\tcbuselibrary{minted} %配合minted宏包进行好看的高亮
+\usemintedstyle{paraiso-dark} %配合minted宏包进行好看的高亮
+\usepackage{framed} 
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{bbding}
+
+%
+% 封面
+%
+
+
+\title{
+	\includegraphics[width=0.65\textwidth]{images/title/ucas_logo 1.pdf}\\
+    \vspace{1in}
+    \textmd{\textbf{\hmwkClass}}\\
+	\textmd{\Large{\textbf{\hmwkClassID}}}\\
+    \textmd{\textbf{\hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\large{\hmwkCompleteTime }\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}\\
+    \vspace{1in}
+	\includegraphics[width=0.25\textwidth]{images/title/Cyber.jpg}\\
+	\vspace{1in}
+}
+
+\author{
+	\hmwkAuthorName \\ 
+	\hmwkAuthorStuID \\
+	\hmwkAuthorInst \\
+	\hmwkAuthorzhuanye \\
+	\hmwkAuthorfangxiang
+	}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+
+%
+% 正文部分
+%
+\begin{document}
+
+
+\maketitle
+
+
+%\include{chapters/ch01}
+%\include{chapters/ch02}
+%\include{chapters/ch03}
+%\include{chapters/ch04}
+%\include{chapters/ch05}
+
+
+\pagebreak
+
+\section{一、多选填空(10分, 每题2分)}
+
+\textbf{1.} 给定函数$f(n)$和$g(n)$, 判断这两个函数阶的关系:_________.
+
+\solution 熟练掌握渐进上界、渐进同阶及渐进下界的概念即可解决. 此处题目不清, 就不解答了.
+\\
+
+
+\textbf{2.} 下面属于遗传算法实现的关键技术问题的有______.
+    \begin{align}
+		\left( \text{1} \right) . \text{解的编码}\quad \quad \quad \left( \text{2} \right) . \text{初始种群的选择} \quad \quad \quad 
+		\left( \text{3} \right) . \text{邻域定义}\quad \quad \quad \left( \text{4} \right) . \text{适应函数} \notag
+	\end{align}
+
+\solution 遗传算法实现的关键技术问题有\textbf{解的编码、适应函数、初始种群的选取、交叉规则以及}
+
+\textbf{终止规则}. 因此选择(1), (2), (3).
+\\
+
+\textbf{3.} 实现$n$皇后问题求解, 有下几种方法哪几种:_______(四选二).
+\begin{align}
+    \left( \text{1} \right) . \text{贪心算法}\quad \quad \quad \left( \text{2} \right) . \text{回溯算法} \quad \quad \quad 
+    \left( \text{3} \right) . \text{分支限界算法}\quad \quad \quad \left( \text{4} \right) . \text{Las Vegas算法} \notag
+\end{align}
+
+\solution \,\,$n$皇后问题的求解可以用回溯算法(第5-7章PPT内容), 也可用Las Vegas算法(第9章
+
+PPT内容). 因此选择(2)和(4).
+\\
+
+
+\textbf{4.} 对于判定问题$\Pi$的Monte Carlo算法, 当返回false(true)时解总是正确的, 但当返回true(false)时
+
+解可能有错误, 该算法是______.
+\begin{align}
+    &\left( \text{1} \right) . \text{偏真的}\textit{Monte}\,\,\textit{Carlo}\text{算法}\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad\left( \text{2} \right) . \text{偏假的}\textit{Monte}\,\,\textit{Carlo}\text{算法} \notag
+    \\
+    &\left( \text{3} \right) . \text{一致的}\textit{Monte}\,\,\textit{Carlo}\text{算法}\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad\left( \text{4} \right) . \text{不一致的}\textit{Monte}\,\,\textit{Carlo}\text{算法} \notag
+\end{align}
+
+\solution 答案选(2), 只要将偏真的Monte Carlo算法的定义中的true/false互换即可得到偏真的
+
+Monte Carlo算法的定义.
+\\
+
+\textbf{5.} 下面说法, 正确的是______.
+\begin{align}
+    &\left( \text{1} \right) . \mathcal{P}\text{类问题是存在多项式时间算法的问题}\quad \quad \quad \left( \text{2} \right) . \mathcal{NP}\text{类问题是不存在多项式时间算法的问题} \notag
+    \\
+    &\left( \text{3} \right) . \mathcal{P}\text{类问题一定也是}\mathcal{NP}\text{类问题}\quad \quad \quad \quad \quad \quad \quad \,\left( \text{4} \right) . \mathcal{NP}\text{类问题比}\mathcal{P}\text{类问题难解} \notag
+\end{align}
+
+\solution 注意一下PPT中的概念定义即可, 答案选择(1)和(3).
+
+\section{二、判断正误(10分, 每题2分)}
+
+这里只记得3个, 填空题和判断题基本上都是作业里面的选择题和判断题\footnote{主要是集中在第八章至十一章($\mathcal{NP}$完全理论, 近似算法, 启发式算法里面), 都是一些概念性问题.}.
+
+\textbf{1.} 0/1背包问题的贪心算法(单位价值高优先装入...)是绝对近似算法. (\quad )
+
+\solution \textbf{错误}(\XSolidBrush), 0/1背包问题的贪心算法\textbf{不是}绝对近似算法, 是$\epsilon$-近似算法(其中$\epsilon = 2$并且该
+
+算法是\textbf{GKK}算法).
+\\
+
+\textbf{2.} 多机调度问题的贪心近似算法(按输入顺序将作业分配给当前最小负载机器)是$\epsilon$-近似算法. (\quad )
+
+\solution \textbf{正确}($\checkmark$), 多机调度问题的贪心近似算法有GMPS和DGMPS分别是2-近似和3/2-近似
+
+算法.
+\\
+
+\textbf{3.} 禁忌搜索中, 禁忌某些对象是为了避免邻域中的不可行解. (\quad )
+
+\solution \textbf{错误}(\XSolidBrush), 选取禁忌对象是为了引起解的变化, 根本目的在于避开邻域内的局部最优解而
+
+不是不可行解.
+\\
+
+
+
+\section{三、简答题(25分)}
+
+\textbf{1.} 写出模拟退火算法的主要步骤. (5分)
+
+\solution 模拟退火算法的主要步骤如下算法\ref{alg:moni}中所示:
+    \begin{algorithm}[H]
+		\begin{algorithmic}[1]
+        \State 任选初始解$x_0$并初始化$x_i\gets x_0,k\gets 0, t_0\gets t_{\text{max}}$(初始温度);
+        \While{$k\leq k_{\text{max}}$ \&\& $t_k\geq T_f$}
+            \State 从邻域$N(x_i)$中随机选择$x_j$, 即$x_j\gets _RN(x_i)$;
+            \State 计算$\Delta f_{ij}=f(x_j)-f(x_i)$;
+            \If{$\Delta f_{ij}\leq 0$ || $\text{exp}\left( -\Delta f_{ij}/t_k \right)>\text{RANDOM}(0,1)$}
+                \State $x_i\gets x_j$;
+            \EndIf
+            \State $t_{k+1}\gets d(t_k)$;
+            \State $ k\gets k+1$;
+        \EndWhile
+		\end{algorithmic}
+		\caption{模拟退火算法步骤}
+		\label{alg:moni}
+	\end{algorithm}
+
+\textbf{2.} 写出一个贪心算法, 来近似估计多机调度问题的解, 并说明该解是什么近似的(不需要证明) (5分)
+
+\solution 贪心算法GMPS为: 按输入的顺序分配作业, 把每一项作业分配给当前负载最小的机器. 并且GMPS算法的近似比为$\epsilon = 2$. 也可以有DGMPS算法: 将任务按处理时间从大到小排序, 然后按GMPS算法进行调度. 该算法的近似比为$\epsilon =3/2$.
+\\
+
+\textbf{3.} 证明相遇集(碰撞集)问题是$\mathcal{NPC}$问题. (10分)
+
+\solution \textbf{碰撞集问题:} 给定一组集合$\left\{ S_1,S_2,\cdots ,S_n \right\}$和预算$b$, 问是否存在一个集合$H$, 其大小不超过$b$, 且$H$和所有$S_i(i=1,2,\cdots,n)$相交非空.
+\begin{itemize}
+    \item \textbf{先证明该问题是一个$\mathcal{NP}$问题}: 假设给出集合$H$的所有元素, 显然可以在\textbf{多项式时间内}验证该集合$H$是否满足条件要求(和$S_i$逐一比较是否有交集并检查规模是否超过$b$), 所以该问题$\in \mathcal{P}$问题$\subseteq \mathcal{NP}$问题.
+    \item \textbf{再利用一个已知的$\mathcal{NPC}$问题, 将其(在多项式时间内)归约到目标问题}: 已知\textbf{图的顶点覆盖问题(VC)}是$\mathcal{NPC}$问题, 只要找到一种把VC问题归约到碰撞集问题的多项式方法, 即可证明碰撞集问题是$\mathcal{NPC}$问题. 具体的归约方式构造如下:
+    
+    假设有图$G=(V,E)$, 则把该图的每一条边对应一个集合$S_i$, 该边的两点作为该集合的元素, 即每个集合都有两个元素(如$S_1=\left\{ v_1,v_2 \right\}$). 这样就可以构造出$|E|$个集合$\left\{ S_1,S_2,\cdots ,S_{\left| E \right|} \right\}$, 再将VC问题中覆盖的顶点数上限$K$作为预算$b$, 并把图$G=(V,E)$的顶点覆盖中的所有点作为集合$H$的元素. 另外还需要说明一下上述多项式变换的充分必要性:
+    \begin{itemize}
+        \item \textbf{当碰撞集问题有解时, 则顶点覆盖问题就有解:} 只需要选取碰撞集的解$H$对应的所有点, 即为对应顶点覆盖问题的解;
+        \item \textbf{当顶点覆盖问题有解时, 则碰撞集问题就有解:} 当顶点覆盖问题有解$V$时, 则将$V$中的每个顶点对应到所生成的那一组集合(即$\left\{ S_1,S_2,\cdots ,S_{\left| E \right|} \right\}$)中的元素, 从而得到集合$H$, 即为碰撞集问题的解.
+    \end{itemize}
+\end{itemize}
+这样就把VC问题归约到碰撞集问题了, 而VC问题是$\mathcal{NPC}$问题, 因此碰撞集问题是$\mathcal{NPC}$问题, $\square$.
+
+\newpage
+
+\textbf{4.} 读程序题, 读懂下列快速Fourier变换的程序, 并使用迭代法分析该程序的时间复杂度. (5分)
+
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+    \Require{$N=2n$,$w$为$n$次单位根, $a$是$N$元数组(多项式$a(x)$的系数向量)}
+    \Ensure{$N$元数组$A$, $A[j]=a\left( w^j \right),j=0,1,\cdots,N-1$}
+    \State \textbf{integer} $j$;
+    \State \textbf{real} $b[\quad],c[\quad]$;
+    \State \textbf{complex} $B[\quad],C[\quad],wp[\quad]$;
+    \If{$N=1$}
+        \State $A[0]:=a[0]$;
+    \Else
+        \State $n:=N/2$;
+        \For{$j$ \textbf{from} 0 \textbf{to} $n-1$}
+            \State $b[j]:=a[2j+1],c[j]:=a[2j]$;
+        \EndFor
+    \EndIf
+    \State $\textbf{FFT}\left(n,b,w\cdot w,B\right),\textbf{FFT}\left(n,c,w\cdot w,C\right)$;
+    \State $wp[0]:=1$;
+    \For{$j$ \textbf{from} 0 \textbf{to} $n-1$}
+        \State $wp[j+1]:=w\cdot wp[j]$;
+        \State $A[j]:=C[j]+B[j]\cdot wp[j]$;
+        \State $A[j+n]:=C[j]-B[j]\cdot wp[j]$;
+    \EndFor
+    \State \textbf{end \{FFT\}}
+    \end{algorithmic}
+    \caption{算法$\textbf{FFT}(N,a,w,A)$}
+    \label{alg:FFT}
+\end{algorithm}
+
+\solution 问题划分为2个规模为$n/2$的子问题, 算法内部的两个for循环(循环体内部都是常数时间的操作)都只需要耗时$O(n)$. 因此$T\left( n \right) =2T\left( n/2 \right) +cn$. 不妨设$n=2^k$(否则$\exists k\in \mathbb{N}^{\ast}$, 使得$2^k\leq n <2^{k+1}$). 于是有如下:
+\begin{align}
+    T\left( 2^k \right) &=2^1T\left( 2^{k-1} \right) +c\cdot 2^k \notag
+    \\
+    &=2^2T\left( 2^{k-2} \right) +2c\cdot 2^k \notag
+    \\
+    &=2^3T\left( 2^{k-3} \right) +3c\cdot 2^k \notag
+    \\
+    &\,\,\,\vdots \notag
+    \\
+    &=2^kT\left( 1 \right) +kc\cdot 2^k \notag
+\end{align}
+不妨设$T(1)=0$, 因此$T(n)=\Theta(n\text{log}n)$.
+
+\newpage
+
+\section{四、算法设计题(55分)}
+
+\textbf{1.} 有$n$个进程$p_1,p_2,..,p_n$, 进程$p_i$的开始时间为$s[i]$, 截止时间为$d[i]$. 可以通过检测程序Test来测试正在运行的进程, Test每次测试时间很短, 可以忽略不计, 即如果Test在时刻$t$测试, 那么它将对满足$s[i]\leq t \leq d[i]$的所有进程同时取得测试数据. 问: 如何安排测试时刻, 使得对每个进程至少测试一次, Test测试的次数达到最少? 设计算法并证明正确性, 分析算法复杂度. (20分)
+
+\solution \textbf{贪心策略}: 将进程按照ddl进行排序. 取第1个进程的ddl作为第一个测试点, 然后顺序检查后续能够被这个测试点检测的进程 (这些进程的开始时间$\leq$测试点), 直到找到下一个不能被测试到的进程为止. 伪码见如下算法\ref{alg:Test}:
+	\begin{algorithm}[H]
+		\begin{algorithmic}[1]
+		\Require{开始时间的数组$s[1,\cdots,n]$, 截止时间的数组$d[1,\cdots,n]$}
+		\Ensure{数组$t$: 顺序选定的测试点构成的数组}
+		\State 将进程按照$d[i]$递增的顺序进行排序(使得$d[1]\leq d[2]\leq \cdots \leq d[n]$);
+		\State $i:=1$; $t[i]:=d[1]$; $j:=2$ \Comment{第一个测试点是最早结束进程的ddl}
+		\While{$j\leq n$ $\&\&$ $s[j]\leq t[i]$} \Comment{检查进程$j$是否可以在时刻$t[i]$被测试}
+			\State $j$++;
+		\EndWhile
+		\If{$j>n$}
+			\State \Return $t$;
+		\Else
+			\State $t[\text{++}i]:=d[j\text{++}]$, \textbf{goto} 3; \Comment{找到待测进程中结束时间最早的进程$j$}
+		\EndIf
+		\State \textbf{end \{Test\}}
+		\end{algorithmic}
+		\caption{\textbf{Test}算法}
+		\label{alg:Test}
+	\end{algorithm}
+\textbf{结论: 对于任意正整数$k$, 存在最优解包含算法前$k$步选择的测试点.}
+	\begin{proof}
+		$k=1$时, 设$S=\left\{ t\left[ i_1 \right] ,t\left[ i_2 \right] ,\cdots \right\} $是最优解, 不妨设$t\left[ i_1 \right] <t\left[ 1 \right]$. 设$p_u$是在时刻$t[i_1]$被测到的任意进程, 那么$s(u)\leq t[i_1] \leq d[u]$, 从而有
+		\begin{align}
+			s\left[ u \right] \le t\left[ i_1 \right] <t\left[ 1 \right] =d\left[ 1 \right] \le d\left[ u \right] 
+		\end{align}
+		因此$p_u$也可以在$t[1]$时刻被测试. 于是在$S$中用$t[1]$替换掉$t[i_1]$后也可得到一个最优解.
+
+		假设对于任意$k$, 算法在前$k$步选择了$k$个测试点$t[1],t[i_2],\cdots,t[i_k]$且存在最优解
+		\begin{align}
+			T=\left\{ t\left[ 1 \right] ,t\left[ i_2 \right] ,\cdots ,t\left[ i_k \right] \right\} \cup T'
+		\end{align}
+		设算法前$k$步选择的测试点不能测到的进程构成集合$Q\subseteq P$, 其中$P$为全体进程集合. 不难证明$T'$是子问题$Q$的最优解\footnote{反证法: 假设$T'$不是子问题$Q$的最优解, 则可以构造出比$T$更优的解, 这显然与$T$的最优性相矛盾.}. 根据归纳假设可得知, $\exists Q$的最优解$T^{\ast}$包含测试点$t[i_{k+1}]$, 即
+		\begin{align}
+			T^{\ast}=\left\{ t\left[ i_{k+1} \right] \right\} \cup T''
+		\end{align}
+		因此有
+		\begin{align}
+			\left\{ t\left[ 1 \right] ,t\left[ i_2 \right] ,\cdots ,t\left[ i_k \right] \right\} \cup T^{\ast}=\left\{ t\left[ 1 \right] ,t\left[ i_2 \right] ,\cdots ,t\left[ i_{k+1} \right] \right\} \cup T''
+		\end{align}
+		也是原问题的最优解, 根据归纳法可知命题成立.
+	\end{proof}
+算法的时间复杂度为$T\left( n \right) =O\left( n\log n \right) +O\left( n \right) =O\left( n\log n \right)$.
+
+\newpage
+
+\textbf{2.} 请设计动态规划算法解决该双机调度问题: 用两台处理机$A$和$B $处理$n $个作业. 设第$i $个作业交给机器$A $处理时所需要的时间是$a_i$, 若由机器$B $来处理, 则所需要的时间是$b_i$. 现在要求每个作业只能由一台机器处理, 每台机器都不能同时处理两个作业. 设计一个动态规划算法, 使得这两台机器处理完这$n$个作业的时间最短(从任何一台机器开工到最后一台机器停工的总时间). (20分)
+
+\solution 在完成前$k$个作业时, 设机器$A$工作了$x$时间(注意$x$限制为正整数), 则机器$B$此时最小的工作时间是$x$的函数. 设$F[k][x]$表示完成前$k$个作业时, 机器$B$最小的工作时间, 则有
+$$
+F\left[ k \right] [x] =\text{min} \left\{ F\left[ k-1 \right] [x] +b_k,F\left[ k-1 \right] [x-a_k] \right\} 
+$$
+其中$F[k-1][x]+b_k$对应的是第$k$个作业由机器$B$来处理, 此时完成前$k-1$个作业时机器$A$的工作时间仍是$x$, 则$B$在$k-1$阶段用时为$F[k-1][x]$; 而$F[k-1][x-a_k]$对应第$k$个作业由机器$A$处理(完成$k-1$个作业, 机器$A$工作时间时$x-a[k]$, 而$B$完成$k$阶段与完成$k-1$阶段用时都为$F[k-1][x-a_k]$). 于是完成前$k$个作业所需要的时间为$T=\text{max} \left\{ x,F\left[ k \right] [x] \right\} $. 根据上述递推关系很容易证得问题满足最优子结构性质. 并且通过下述算法代码可知时间复杂度为$\displaystyle O\left( n\cdot \text{min} \left\{ \sum_{i=1}^n{a_i},\sum_{i=1}^n{b_i} \right\} \right)$.
+\begin{tcblisting}{listing engine=minted,boxrule=0.1mm,
+colback=blue!5!white,colframe=blue!75!black,
+listing only,left=5mm,enhanced,sharp corners=all,
+overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+minted language=c++,
+minted style=tango,
+minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm}}
+int schedule() {
+int sumA = a[1], time[n];
+//k = 1的情况
+for(int x = 0; x < a[1]; x++) {
+    F[1][x] = b[1];
+}
+F[1][a[1]] = min(b[1],a[1]);
+//初始化
+for(int i = 2; i <= n; i++) {
+    for(int j = 0; j <= n; j++) {
+        F[i][j] = INT_MAX;
+    }
+}
+//k >= 2的情况
+for(int k = 2; k <= n; k++) {
+    sumA += a[k];
+    time[k] = INT_MAX;
+    for(int x = 0; x <= sumA; x++) {
+        if(x < a[k]) {
+            F[k][x] = F[k-1][x] + b[k];
+        } else {
+            F[k][x] = min(F[k-1][x] + b[k], F[k-1][x-a[k]]);
+        }
+        //判断完成作业k时,到底是机器B所需最小时间小,还是A所需时间小
+        time[k] = min(time[k],max(x,F[k][x]));
+    }
+}
+return time[n];
+}
+\end{tcblisting}
+
+
+\newpage
+
+
+\textbf{3.} 最佳调度问题: 假设有$n $个任务要由$k $个可并行工作的机器来完成, 完成任务$i $需要的时间为$t_i$. 试设计一个分枝限界算法(要求写出剪枝过程), 找出完成这$n $个任务的最佳调度, 使得完成全部任务的时间(从机器开始加工任务到最后停机的时间)最短. (15分)
+
+\solution \textbf{限界函数:} 将$n$个任务按照所需时间非递减排序, 得到任务序列$1,2,\cdots,n,$满足时间关系$t[1]<t[2]<\cdots<t[n]$. 将$n$个任务中的前$k$个任务分配给当前$k$个机器, 然后将第$k+1$个任务分配给最早完成已分配任务的机器, 依次进行, 最后找出这些机器最终分配任务所
+	需时间最长的, 此时间作为分支限界函数. 如果一个扩展节点所需的时间超过这个已知的最优值, 则删掉以此节点为根的子树. 否则更新最优值.
+
+	\textbf{优先级:} 哪台机器完成当前任务的时间越早, 也就是所有机器中最终停机时间越早, 优先级就越高, 即被选作最小堆中的堆顶, 作为扩展节点. 分支限界算法如下所示:
+\begin{tcblisting}{listing engine=minted,boxrule=0.1mm,
+colback=blue!5!white,colframe=blue!75!black,
+listing only,left=5mm,enhanced,sharp corners=all,
+overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+minted language=c++,
+minted style=tango,
+minted options={fontsize=\small,breaklines,autogobble,linenos,numbersep=3mm}}
+Node{
+    int Path[n];
+    int T[k];
+    int Time;
+    int length;
+}
+Proc BestDispatch(int n, int k, int t[]){
+    Node Boot, X, P, result;
+    int f;
+    f = n * max(t[]);
+    Boot.T[n] = {0};
+    Boot.Time = 0;
+    Boot.Path[n] = {0};
+    Boot.length=0;
+    AddHeap(Boot);
+    while (!Heap.empty()) do {
+        P = DeleteMinHeap();
+        for i = 1 to k do {
+            X = Newnode(P.Path[], P.T[], P.length + 1);
+            X.Path[X.length] = i;
+            X.T[i] = X.T[i] + t[X.length];
+            X.Time = max(X.T[]);
+            if X.length == n then {
+                if X.Time < f then {
+                    f = X.Time;
+                    result = X;
+                }
+            }
+            else {
+                if X.Time < f then {
+                    AddHeap(X);
+                }
+            }
+        }
+    }
+}
+end {BestDispatch}
+\end{tcblisting}
+
+
+
+
+
+
+
+
+
+\begin{figure}[H]  % 这里记得用[H]
+    \centering
+    \includegraphics[width=0.35\linewidth]{images/title/ucas_logo 1.pdf}
+    %\caption{ucas-logo}
+    \label{fig:ucas-logo}
+\end{figure}
+
+% 引用文献
+\bibliographystyle{unsrt}  % unsrt:根据引用顺序编号
+\bibliography{refs}
+
+
+\end{document}

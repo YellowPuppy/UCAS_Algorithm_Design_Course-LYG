@@ -1,0 +1,37 @@
+Node{
+    int Path[n];
+    int T[k];
+    int Time;
+    int length;
+}
+Proc BestDispatch(int n, int k, int t[]){
+    Node Boot, X, P, result;
+    int f;
+    f = n * max(t[]);
+    Boot.T[n] = {0};
+    Boot.Time = 0;
+    Boot.Path[n] = {0};
+    Boot.length=0;
+    AddHeap(Boot);
+    while (!Heap.empty()) do {
+        P = DeleteMinHeap();
+        for i = 1 to k do {
+            X = Newnode(P.Path[], P.T[], P.length + 1);
+            X.Path[X.length] = i;
+            X.T[i] = X.T[i] + t[X.length];
+            X.Time = max(X.T[]);
+            if X.length == n then {
+                if X.Time < f then {
+                    f = X.Time;
+                    result = X;
+                }
+            }
+            else {
+                if X.Time < f then {
+                    AddHeap(X);
+                }
+            }
+        }
+    }
+}
+end {BestDispatch}
