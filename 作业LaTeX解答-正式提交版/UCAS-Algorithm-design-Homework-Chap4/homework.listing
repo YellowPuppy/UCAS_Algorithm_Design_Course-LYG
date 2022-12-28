@@ -1,0 +1,41 @@
+string Huff_Decode(Node huffTree[], int n,string s)
+{
+    cout << "解码后为: ";
+    string temp = "", str = "";//保存解码后的字符串
+    for (int i = 0; i < s.size(); i++)
+    {
+        temp = temp + s[i];
+        for (int j = 0; j < n; j++)
+        {
+            if (temp == huffTree[j].code)
+            {
+                str = str + huffTree[j].ch;
+                temp = "";
+                break;
+            }
+            else if (i == s.size()-1 && j == n-1 && temp != "")//全部遍历后没有
+            {
+                str = "解码错误！";
+            }
+        }
+    }
+    return str;
+}
+
+int main()
+{
+    //编码过程
+    const int n = 5;
+    Node huffTree[2 * n];
+    string str[] = { "A", "B", "C", "D", "E"};
+    int w[] = { 30, 30, 5, 20, 15 };
+    Huff_Tree(huffTree, w, str, n);
+    Huff_Code(huffTree, n);
+    //解码过程
+    string s;
+    cout << "输入编码：";
+    cin >> s;
+    cout << Huff_Decode(huffTree, n, s) << endl;
+    system("pause");
+    return 0;
+}

@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int count; //定义为全局变量
+    int reversePairs(vector<int>& nums) {
+        count = 0;
+        MergeSort(nums, 0, nums.size() - 1);
+        return count;
+    }
+
+    void Merge(vector<int>& nums, int low , int mid, int high) {
+        int i = low, j = mid + 1, k = 0;
+        vector<int> temp(high - low + 1);
+        while(i <= mid && j <= high) {
+            if(nums[i] <= nums[j])
+                temp[k++] = nums[i++];  //此情形下逆序数没有增量
+            else {
+                temp[k++] = nums[j++];
+                count += mid - i + 1;  //此情形下逆序数才能有增量
+            }
+        }
+        while(i <= mid) temp[k++] = nums[i++];  //把剩下的nums左半数组接上
+        while(j <= high) temp[k++] = nums[j++];  //把剩下的nums右半数组接上
+        copy(temp.begin(), temp.end(), nums.begin() + low);  //把临时数组的元素拷贝回nums
+        vector<int>().swap(temp);  //清除容器并最小化它的容量
+    }
+
+    void MergeSort(vector<int>& nums, int low, int high) {
+        if(low < high) {
+            int mid = (low + high) >> 1;
+            MergeSort(nums, low, mid);
+            MergeSort(nums, mid + 1, high);
+            Merge(nums, low, mid, high);
+        }
+    }
+};
