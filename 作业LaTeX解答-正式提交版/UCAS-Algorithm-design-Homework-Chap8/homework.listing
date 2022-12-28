@@ -1,0 +1,11 @@
+        int index = max_element(dp.begin(), dp.end()) - dp.begin(); //最大值对应的索引
+        int MaxLen = dp[index]; //整除子集的最大长度值
+        vector<int> res; //注意整个数组的最大整除子集是以nums[index]为结尾的!
+        while (res.size() != MaxLen) {
+            res.push_back(nums[index]);
+            index = m[index]; //逐步地从后往前回溯索引, 并将对应元素写进res数组
+        }
+        reverse(res.begin(), res.end()); //reverse一下更好看一些, 此步可以选择注释掉
+        return res;
+    }
+};

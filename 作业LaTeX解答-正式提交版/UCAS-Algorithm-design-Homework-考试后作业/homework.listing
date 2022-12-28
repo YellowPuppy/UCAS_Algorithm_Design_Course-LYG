@@ -1,0 +1,31 @@
+         % 2. Metropolis法则判断是否接受新解
+         [S1 R] = Metropolis(S1, S2, D, T0);   % Metropolis抽样算法
+         temp(k, :) = [S1 R];            % 记录下一路线及其长度
+     end
+     %% 3. 记录每次迭代过程的最优路线
+     [d0, index] = min(temp(:, end));    % 找出当前温度下最优路线
+     if count == 1 || d0 <= Obj(count-1)
+         Obj(count) = d0;                    % 如果当前温度下最优路程小于上一路程则记录当前路程
+     else
+         Obj(count) = Obj(count-1);    % 如果当前温度下最优路程大于上一路程则记录上一路程
+     end
+     track(count, :) = temp(index, 1:end-1);  % 记录当前温度的最优路线
+     %降温
+     T0 = q * T0;
+ end
+
+ %% VII. 优化过程迭代图
+ figure
+ plot(1:count,Obj)
+ xlabel('迭代次数')
+ ylabel('距离')
+ title('优化过程')
+
+ %% VIII. 绘制最优路径图
+ DrawPath(track(end,:),X)
+
+ %% IX. 输出最优解的路线和总距离
+ disp('最优解:')
+ S = track(end,:);
+ p = OutputPath(S);
+ disp(['总距离：',num2str(PathLength(D,S))]);
