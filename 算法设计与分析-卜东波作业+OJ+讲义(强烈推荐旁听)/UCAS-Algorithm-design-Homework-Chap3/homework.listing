@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n = s.size(), L = 1, index = 0;
+        string res;
+        if(n < 2) res = s;
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        dp[0][0] = 1;
+        for(int j = 0; j < n; j++) {  //注意循环变量i,j的顺序不能反,
+            for(int i = 0; i <= j; i++) {  //因为求解方向是从左往右的!
+                if(s[i] != s[j]) {
+                    dp[i][j] = 0;
+                }
+                else {
+                    if(j - i < 2) {
+                        dp[i][j] = 1;
+                        if(L < j - i + 1) {
+                            L = j - i + 1;
+                            index = i;
+                        }
+                    }
+                    else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                        if(dp[i][j] == 1) {
+                            if(L < j - i + 1) {
+                                L = j - i + 1;
+                                index = i;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return s.substr(index, L);
+    }
+};
